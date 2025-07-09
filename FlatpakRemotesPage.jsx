@@ -26,6 +26,15 @@ const FlatpakRemotesPage = () => {
     id: FLATPAK_CREATE_MODAL_ID,
   });
 
+  const handleCreateClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleSubmit = () => {
+    alert('Submitted!');
+    setIsModalOpen(false);
+  };
+
   const {
     results = [], subtotal, page, per_page: perPage,
   } = response || {};
@@ -95,7 +104,7 @@ const FlatpakRemotesPage = () => {
       apiOptions={apiOptions}
       header={__('Flatpak Remotes')}
       creatable={true}
-      customCreateAction={() => setIsModalOpen(true)}
+      customCreateAction={handleCreateClick}
       controller="/katello/api/v2/flatpak_remotes"
     >
       <>
